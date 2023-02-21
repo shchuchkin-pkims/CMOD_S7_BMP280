@@ -111,21 +111,54 @@ void BMP280_ReadDeviceID()
 
 /****************************************************************************/
 /**
-* Converting BMP280 registers values to temperature in Celsius.
+* Reading BMP280 calibration constants registers values.
 *
 *
-* @param	temp_xlsb is a part of temperature value register.
-* @param	dig_T1_lsb is a lesser byte of a temperature calibration constant
+* @param	dig_T1_lsb is a lesser byte of a temperature calibration constant T1
+* @param	dig_T1_msb is a major byte of a temperature calibration constant T1
+* @param	dig_T2_lsb is a lesser byte of a temperature calibration constant T2
+* @param	dig_T2_msb is a major byte of a temperature calibration constant T2
+* @param	dig_T3_lsb is a lesser byte of a temperature calibration constant T3
+* @param	dig_T3_msb is a major byte of a temperature calibration constant T3
 *
 * @return
-*		- Temperature in degrees in Celsius.
+*			None.
 *
 * @note		None.
 *
 *****************************************************************************/
-double BMP280_ReadCalibConst(u32 temp_xlsb, u32 temp_lsb, u32 temp_msb, u32 dig_T1_lsb,	u32 dig_T1_msb, u32 dig_T2_lsb, u32 dig_T2_msb, u32 dig_T3_lsb, u32 dig_T3_msb)
+void BMP280_ReadCalibConst(u32 *dig_T1_lsb, u32 *dig_T1_msb, u32 *dig_T2_lsb, u32 *dig_T2_msb, u32 *dig_T3_lsb, u32 *dig_T3_msb)
 {
-	return 0;
+	(void) i2c_read(BMP280_IIC_ADDR, 0x88, dig_T1_lsb, 1);
+	(void) i2c_read(BMP280_IIC_ADDR, 0x89, dig_T1_msb, 1);
+
+	(void) i2c_read(BMP280_IIC_ADDR, 0x8A, dig_T2_lsb, 1);
+    (void) i2c_read(BMP280_IIC_ADDR, 0x8B, dig_T2_msb, 1);
+
+    (void) i2c_read(BMP280_IIC_ADDR, 0x8C, dig_T3_lsb, 1);
+    (void) i2c_read(BMP280_IIC_ADDR, 0x8D, dig_T3_msb, 1);
+}
+
+/****************************************************************************/
+/**
+* Reading BMP280 temperature registers raw data.
+*
+*
+* @param	temp_xlsb is a XLSB part [3:0] of the raw temperature measurement
+* @param	temp_lsb is a LSB part [11:4] of the raw temperature measurement
+* @param	temp_msb is a MSB part [19:12] of the raw temperature measurement
+*
+* @return
+*			None.
+*
+* @note		None.
+*
+*****************************************************************************/
+void BMP280_ReadTempValues(u32 *temp_xlsb, u32 *temp_lsb, u32 *temp_msb)
+{
+	(void) i2c_read(BMP280_IIC_ADDR, 0xFC, temp_xlsb, 1);
+	(void) i2c_read(BMP280_IIC_ADDR, 0xFB, temp_lsb, 1);
+	(void) i2c_read(BMP280_IIC_ADDR, 0xFA, temp_msb, 1);
 }
 
 

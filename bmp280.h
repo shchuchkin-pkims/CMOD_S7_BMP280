@@ -5,4 +5,6 @@
 
 
 void BMP280_printTemp_UART();
+void BMP280_ReadCalibConst();
+void BMP280_ReadTempValues();
 double BMP280_TempConvertion();

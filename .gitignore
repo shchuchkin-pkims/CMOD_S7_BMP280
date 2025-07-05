@@ -1,0 +1,58 @@
+# Ignore following catalogs
+bmp280.sim
+bmp280.runs
+bmp280.hw
+bmp280.gen
+bmp280.cache
+bmp280.sdk
+bmp280.ip_user_files
+bmp280.ioplanning
+
+
+## Ignore everything
+#*
+#
+## But not these files...
+#!.gitignore
+#!component.xml
+#!.project
+#!.cproject
+#!constraints.xdc
+#!*.xci
+#!*.v
+#!*.sv
+#!*.svh
+#!*.vh
+#!*.vhd
+#!*.tcl
+#!*.wcfg
+#!*.h
+#!*.cc
+#!*.cpp
+#!*.c
+#!*.inc
+#!*.py
+#!*.xdc
+#
+## ...even if they are in subdirectories
+#!*/
+#
+## Except for xilinx auto-generated files
+#/**/*.srcs/
+#/**/*.cache/
+#/**/*.hw/
+#/**/*.ip_user_files/
+#/**/*.runs/
+#/**/*.sim/
+#/**/*_BSP*/
+#/**/*_HW*/
+#/**/.Xil/
+#/**/.metadata/
+#/**/RemoteSystemsTempFiles/
+#/**/doc/
+#/**/webtalk/
+#/**/sim/
+#/**/synth/
+#/**/hdl/
+#/**/demo_tb/
+#/**/misc/

@@ -1,0 +1,9 @@
+axi_gpio_0:
+- axi_gpio
+- gpio
+axi_iic_0:
+- axi_iic
+- iic
+axi_uartlite_0:
+- axi_uartlite
+- uartlite

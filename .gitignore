@@ -8,6 +8,10 @@ bmp280.sdk
 bmp280.ip_user_files
 bmp280.ioplanning
 
+#Ignore files
+bmp280_lnx_drv/.vscode
+bmp280_lnx_drv/main
+.log
 
 ## Ignore everything
 #*
